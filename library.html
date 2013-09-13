@@ -67,8 +67,8 @@
       status: "available" 
     },
   ];
-  // var libTemplateHTML = $('#templates .book').html();
-  // var libTemplate = _.template(libTemplateHTML);
+  var libTemplateHTML = $('#templates .book').html();
+  var libTemplate = _.template(libTemplateHTML);
   // var renderLibrary = function() {
   //   for (var i=0; i < books.length; i += 1) {
   //     var newlibHTML = libTemplate(books[i])
@@ -78,16 +78,21 @@
   // renderLibrary()
 
   $('#submit').on('click', function(e) {
-    var title = $('#title').val();
-    var author = $('#author').val();
+    var new_title = $('#title').val();
+    var new_author = $('#author').val();
     // console.log('title', title);
     // console.log('author', author);
-    var status = "available";
-    var newlibHTML = [
-      title,
-      author,
-      status
-    ]
+    var new_status = "available";
+    // var newlibHTML = libTemplate({
+    //   title: 'Ed',
+    //   author: 1001,
+    //   status: 'available'
+    // });
+    var newlibHTML =  libTemplate({
+      title: new_title,
+      author: new_author,
+      status: new_status
+    });
     $('#library').append(newlibHTML);
   });
 
