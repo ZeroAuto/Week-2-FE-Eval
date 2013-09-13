@@ -22,17 +22,76 @@
 
 <h1>THE LIBRARY</h1>
 
+<div>
+  <label>Title:</label>
+  <input id="title" type="text">
+  <label>Author:</label>
+  <input id="author" type="text">
+  <input id="submit" type="button" value="submit book">
+</div>
+
 
 <div id="library"></div>
 
-<div id="templates">
 
+<div id="templates">
+  <script class="book" type="text/template">
+    <div class="book">
+      <h3><%= title %></h3>
+      <h5> by <%= author %></h5>
+      <p> is <%= status %></p>
+    </div>
+  </script>
 </div>
+
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
 <script type="text/javascript">
   // TODO
+
+  var books = [
+    { 
+      title: 'Freedom', 
+      author: "Jonathan Franzan", 
+      status: "available"},
+    { 
+      title: 'Slaugherhouse Five', 
+      author: "Kurt Vonnegut", 
+      status: "available" 
+    },
+    { 
+      title: "The Yiddish Policemen's Union", 
+      author: "Michael Chabon", 
+      status: "available" 
+    },
+  ];
+  // var libTemplateHTML = $('#templates .book').html();
+  // var libTemplate = _.template(libTemplateHTML);
+  // var renderLibrary = function() {
+  //   for (var i=0; i < books.length; i += 1) {
+  //     var newlibHTML = libTemplate(books[i])
+  //     $('#library').append(newlibHTML);
+  //   }
+  // };
+  // renderLibrary()
+
+  $('#submit').on('click', function(e) {
+    var title = $('#title').val();
+    var author = $('#author').val();
+    // console.log('title', title);
+    // console.log('author', author);
+    var status = "available";
+    var newlibHTML = [
+      title,
+      author,
+      status
+    ]
+    $('#library').append(newlibHTML);
+  });
+
+
 </script>
 
 <small>It's back.</small>
